@@ -22,6 +22,8 @@ RUN apk add --no-cache bash coreutils
 RUN apk --no-cache add openjdk11-jre --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
 
 RUN apk add --no-cache -t .build-deps git curl ca-certificates jq gcc musl-dev libffi-dev zip
+RUN pip config set global.index-url https://repo.mlops.dp.tech/repository/pypi-group/simple
+RUN curl -vv google.com
 RUN mkdir -p /opt \
   && mirror=$(curl --stderr /dev/null https://www.apache.org/dyn/closer.cgi\?as_json\=1 | jq -r '.preferred') \
   && curl -sSL "${mirror}kafka/${KAFKA_VERSION}/kafka_${SCALA_VERSION}-${KAFKA_VERSION}.tgz" \

@@ -32,6 +32,7 @@ services:
   kafka-setup:
     build:
       context: kafka-setup
+      network: host
     image: ${DATAHUB_KAFKA_SETUP_IMAGE:-linkedin/datahub-kafka-setup}:${DATAHUB_VERSION:-head}
     env_file: kafka-setup/env/docker.env
     hostname: kafka-setup
@@ -83,6 +84,7 @@ services:
   elasticsearch-setup:
     build:
       context: ../
+      network: host
       dockerfile: docker/elasticsearch-setup/Dockerfile
     image: ${DATAHUB_ELASTIC_SETUP_IMAGE:-linkedin/datahub-elasticsearch-setup}:${DATAHUB_VERSION:-head}
     env_file: elasticsearch-setup/env/docker.env
@@ -94,6 +96,7 @@ services:
   datahub-gms:
     build:
         context: ../
+        network: host
         dockerfile: docker/datahub-gms/Dockerfile
     image: ${DATAHUB_GMS_IMAGE:-linkedin/datahub-gms}:${DATAHUB_VERSION:-head}
     hostname: datahub-gms
@@ -109,6 +112,7 @@ services:
   datahub-frontend-react:
     build:
       context: ../
+      network: host
       dockerfile: docker/datahub-frontend/Dockerfile
     image: ${DATAHUB_FRONTEND_IMAGE:-linkedin/datahub-frontend-react}:${DATAHUB_VERSION:-head}
     env_file: datahub-frontend/env/docker.env

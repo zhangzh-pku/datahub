@@ -90,6 +90,14 @@ export class DatasetEntity implements Entity<Dataset> {
             }}
             tabs={[
                 {
+                    name: 'Documentation',
+                    component: DocumentationTab,
+                },
+                {
+                    name: 'Properties',
+                    component: PropertiesTab,
+                },
+                {
                     name: 'Schema',
                     component: SchemaTab,
                 },
@@ -102,14 +110,6 @@ export class DatasetEntity implements Entity<Dataset> {
                         enabled: (_, dataset: GetDatasetQuery) =>
                             (dataset?.dataset?.viewProperties?.logic && true) || false,
                     },
-                },
-                {
-                    name: 'Documentation',
-                    component: DocumentationTab,
-                },
-                {
-                    name: 'Properties',
-                    component: PropertiesTab,
                 },
                 {
                     name: 'Lineage',
